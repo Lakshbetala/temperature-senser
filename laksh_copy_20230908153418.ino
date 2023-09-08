@@ -26,21 +26,21 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
-  float h = dht.readHumidity();
-  float t = dht.readTemperature();
+  float humid = dht.readHumidity();
+  float temp = dht.readTemperature();
   float f = dht.readTemperature(true);
-  if (isnan(h) || isnan(t) || isnan(f))
+  if (isnan(humid) || isnan(temp) || isnan(f))
   {
     Serial.println("Something is not working as intended.");
     return; 
   }
   Serial.println("Humidity: ");
-  Serial.print(h);
+  Serial.print(humid);
   Serial.print("%");
   Serial.println("Temperature");
-  Serial.print(t);
+  Serial.print(temp);
   Serial.print("degrees celsius.");
-  Blynk.virtualWrite(V0, t);
-  Blynk.virtualWrite(V1, h);
+  Blynk.virtualWrite(V0, temp);
+  Blynk.virtualWrite(V1, humid);
   delay(1000);
 }
